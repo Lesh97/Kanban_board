@@ -21,6 +21,11 @@ const Title = styled.div`
   font-size: 18px;
 `;
 
+interface IAreaProps {
+  draggingFromThisWith: boolean;
+  isDraggingOver: boolean;
+}
+
 const Area = styled.div<IAreaProps>`
   background-color: ${(props) =>
     props.isDraggingOver
@@ -50,11 +55,6 @@ const Form = styled.form`
     margin: 0 auto;
   }
 `;
-
-interface IAreaProps {
-  draggingFromThisWith: boolean;
-  isDraggingOver: boolean;
-}
 
 interface IBoardProps {
   toDos: ITodo[];
@@ -86,18 +86,18 @@ function Board({ toDos, boardId }: IBoardProps) {
       <Title>{boardId}</Title>
       <Form onSubmit={handleSubmit(onValid)}>
         <input
-          {...(register("toDo"), { required: true })}
+          {...register("toDo", { required: true })}
           type="text"
-          placeholder={`Add task ${boardId}`}
-        ></input>
+          placeholder={`Add task on ${boardId}`}
+        />
       </Form>
       <Droppable droppableId={boardId}>
-        {(provided, snapshot) => (
+        {(magic, info) => (
           <Area
-            isDraggingOver={snapshot.isDraggingOver}
-            isDraggingFromThis={Boolean(snapshot.draggingFromThisWith)}
-            ref={provided.innerRef}
-            {...provided.droppableProps}
+            isDraggingOver={info.isDraggingOver}
+            isDraggingFromThis={Boolean(info.draggingFromThisWith)}
+            ref={magic.innerRef}
+            {...magic.droppableProps}
           >
             {toDos.map((toDo, index) => (
               <DraggableCard
@@ -105,14 +105,13 @@ function Board({ toDos, boardId }: IBoardProps) {
                 index={index}
                 toDoId={toDo.id}
                 toDoText={toDo.text}
-              ></DraggableCard>
+              />
             ))}
-            {provided.placeholder}
+            {magic.placeholder}
           </Area>
         )}
       </Droppable>
     </Wrapper>
   );
 }
-
 export default Board;
