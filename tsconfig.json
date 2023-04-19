@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5", // 'es3', 'es5', 'es2015', 'es2016', 'es2017','es2018', 'esnext' 가능
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true, //컴파일시 주석제거
+    "jsx": "react-jsx",
+    "moduleResolution": "node"
+  }
+}
