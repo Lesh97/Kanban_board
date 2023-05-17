@@ -27,6 +27,7 @@ interface IAreaProps {
 }
 
 const Area = styled.div<IAreaProps>`
+  height: 300px;
   background-color: ${(props) =>
     props.isDraggingOver
       ? "#dfe6e9"
@@ -88,7 +89,7 @@ function Board({ toDos, boardId }: IBoardProps) {
         <input
           {...register("toDo", { required: true })}
           type="text"
-          placeholder={`Add task on ${boardId}`}
+          placeholder={`${boardId}에 추가하기`}
         />
       </Form>
       <Droppable droppableId={boardId}>
