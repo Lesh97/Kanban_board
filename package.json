@@ -1,7 +1,7 @@
 {
   "name": "my-board",
   "version": "0.1.0",
-  "homepage": "https://lesh97.github.io/Kanban_board/",
+  "homepage": "https://lesh97.github.io/Kanban_board",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -48,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-beautiful-dnd": "^13.1.4"
+    "@types/react-beautiful-dnd": "^13.1.4",
+    "gh-pages": "^5.0.0"
   }
 }
